@@ -1,0 +1,15 @@
+{
+  "name": "fish-eagle-ws",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:proxy": "MODE=proxy node server.js",
+    "start:local": "MODE=local node server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

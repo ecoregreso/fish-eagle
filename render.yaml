@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: fish-eagle-ws
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: MODE
+        value: proxy
+      - key: UPSTREAM_WS
+        value: wss://skillmachine.net/fish-eagle-fight-api/eagle-strike/connection
+      - key: UPSTREAM_ORIGIN
+        value: https://skillmachine.net
