@@ -74,7 +74,12 @@ const wss = new WebSocketServer({ noServer: true, maxPayload: 10 * 1024 * 1024 }
 
 server.on('upgrade', (req, socket, head) => {
   const url = new URL(req.url || '/', `http://${req.headers.host}`);
-  if (url.pathname !== '/' && url.pathname !== '/ws') {
+  const pathname = url.pathname || '/';
+  const allowed =
+    pathname === '/' ||
+    pathname === '/ws' ||
+    pathname.endsWith('/connection');
+  if (!allowed) {
     socket.destroy();
     return;
   }
